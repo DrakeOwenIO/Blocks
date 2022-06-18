@@ -18,6 +18,9 @@ var rectY = 200
 var rectLen = 200
 var rectWid = 100
 
+// Game Over Div
+var gameOverDiv = document.getElementById("gameOverBox")
+
 // Key pressed check
 window.addEventListener("keydown", function(e){
     keys[e.keyCode] = true;
@@ -30,12 +33,19 @@ window.addEventListener("keyup", function(e){
 
 // Initialization
 function init(){
+
+    // Running the game at 60fps
+    window.setInterval(loop, 1000/60);
+
+    // Set canvas size
     canvasWidth = 800;
     canvasHeight = 600;
 
+    // Display canvas size
     canvas.setAttribute("width", canvasWidth)
     canvas.setAttribute("height", canvasHeight)
 
+    // Player Starting Position
     mainPlayer.posX = canvasWidth / 2 - (mainPlayer.size / 2);
     mainPlayer.posY = canvasHeight / 2 - (mainPlayer.size / 2);
 }
@@ -89,7 +99,7 @@ function update(){
         mainPlayer.posY + mainPlayer.size >= rectY &&
         mainPlayer.posY <= rectY + rectLen)
     {
-        console.log('colliding');
+        gameOver();
     }
 }
 
@@ -106,8 +116,11 @@ function render(){
 
 }
 
-// Running the game at 60fps
-window.setInterval(loop, 1000/60);
+function gameOver() {
+    canvas.style.display = "none";
+    var tooltip = document.getElementById('tooltip');
+    tooltip.textContent = 'Game Over';
+}
 
 // Calling the initialization
 init();
