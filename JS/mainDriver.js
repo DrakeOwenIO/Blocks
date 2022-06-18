@@ -1,3 +1,5 @@
+// import {Player} from './playerClass.js';
+
 // Defining the play area
 var canvas = document.getElementById("game");
 var context = canvas.getContext("2d");
@@ -13,11 +15,7 @@ var playerSpeed = 5;
 // Recording keypresses
 var keys = [];
 
-// Collision Dectection Variables
-var touchingLeftWall = false;
-var touchingRightWall = false;
-var touchingTopWall = false;
-var touchingBottomWall = false;
+// mainPlayer = new Player(0, 0, 100, 5);
 
 // Key pressed check
 window.addEventListener("keydown", function(e){
@@ -33,11 +31,11 @@ window.addEventListener("keyup", function(e){
 function init(){
     touchingLeftWall = false;
 
-    canvasWidth = 800;
+    canvasWidth = 800
     canvasHeight = 600;
 
-    canvas.setAttribute("width", 800)
-    canvas.setAttribute("height", 600)
+    canvas.setAttribute("width", canvasWidth)
+    canvas.setAttribute("height", canvasHeight)
 
     playerX = canvasWidth/2;
     playerY = canvasHeight/2;
@@ -55,34 +53,40 @@ function update(){
 // MOVEMENT KEYS
     // Move Left | A
     if(keys[65] == true) {
-        playerX = playerX - playerSpeed;   
+        if(playerX > canvasWidth - canvasWidth)
+        {
+            playerX = playerX - playerSpeed;
+            console.log(playerX) 
+        }
     }
 
     // Move Up | W
     if(keys[87] == true) {
-        playerY = playerY - playerSpeed;
+        if(playerY > canvasHeight - canvasHeight)
+        {
+            playerY = playerY - playerSpeed;
+            console.log(playerY)   
+        }
 
     }
 
     // Move Down | S
     if(keys[83] == true) {
-        playerY = playerY + playerSpeed;
+        if(playerY < canvasHeight - 100)
+        {
+            playerY = playerY + playerSpeed;
+            console.log(playerX)   
+        }
     }
 
     //Move Right | D
     if(keys[68] == true) {
-        playerX = playerX + playerSpeed;
+        if(playerX < canvasWidth - 100)
+        {
+            playerX = playerX + playerSpeed;
+            console.log(playerX)   
+        }
     }
-
-
-//Game Boundary Collision
-    // Left Wall
-    if(playerX == canvasWidth - canvasWidth) {
-        touchingLeftWall = true;
-        playerX = 0;
-    }
-
-    console.log(touchingLeftWall);
 }
 
 // Render stuff on the screen
