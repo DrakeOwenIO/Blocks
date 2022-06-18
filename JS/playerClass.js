@@ -1,4 +1,4 @@
-export class Player {
+export default class Player {
     constructor(posX, posY, size, speed) {
         this.posX = posX;
         this.posY = posY;
@@ -6,11 +6,3 @@ export class Player {
         this.speed = speed;
     }
 }
-
-
-
-
-// var playerX = 0;
-// var playerY = 0;
-// var playerSize = 100;
-// var playerSpeed = 5;

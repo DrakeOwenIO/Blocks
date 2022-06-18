@@ -1,4 +1,4 @@
-// import {Player} from './playerClass.js';
+import Player from "./playerClass.js"
 
 // Defining the play area
 var canvas = document.getElementById("game");
@@ -6,16 +6,11 @@ var context = canvas.getContext("2d");
 var canvasWidth = 0;
 var canvasHeight = 0;
 
-// Defining Player Properties
-var playerX = 0;
-var playerY = 0;
-var playerSize = 100;
-var playerSpeed = 5;
-
 // Recording keypresses
 var keys = [];
 
-// mainPlayer = new Player(0, 0, 100, 5);
+// Create player
+const mainPlayer = new Player(0, 0, 100, 5);
 
 // Key pressed check
 window.addEventListener("keydown", function(e){
@@ -29,16 +24,14 @@ window.addEventListener("keyup", function(e){
 
 // Initialization
 function init(){
-    touchingLeftWall = false;
-
-    canvasWidth = 800
+    canvasWidth = 800;
     canvasHeight = 600;
 
     canvas.setAttribute("width", canvasWidth)
     canvas.setAttribute("height", canvasHeight)
 
-    playerX = canvasWidth/2;
-    playerY = canvasHeight/2;
+    mainPlayer.posX = (canvasWidth / 2) - mainPlayer.size;
+    mainPlayer.posY = (canvasHeight / 2) - mainPlayer.size;
 }
 
 // Gameloop
@@ -53,38 +46,34 @@ function update(){
 // MOVEMENT KEYS
     // Move Left | A
     if(keys[65] == true) {
-        if(playerX > canvasWidth - canvasWidth)
+        if(mainPlayer.posX > canvasWidth - canvasWidth)
         {
-            playerX = playerX - playerSpeed;
-            console.log(playerX) 
+            mainPlayer.posX = mainPlayer.posX - mainPlayer.speed;
         }
     }
 
     // Move Up | W
     if(keys[87] == true) {
-        if(playerY > canvasHeight - canvasHeight)
+        if(mainPlayer.posY > canvasHeight - canvasHeight)
         {
-            playerY = playerY - playerSpeed;
-            console.log(playerY)   
+            mainPlayer.posY = mainPlayer.posY - mainPlayer.speed;
         }
 
     }
 
     // Move Down | S
     if(keys[83] == true) {
-        if(playerY < canvasHeight - 100)
+        if(mainPlayer.posY < canvasHeight - mainPlayer.size)
         {
-            playerY = playerY + playerSpeed;
-            console.log(playerX)   
+            mainPlayer.posY = mainPlayer.posY + mainPlayer.speed;
         }
     }
 
     //Move Right | D
     if(keys[68] == true) {
-        if(playerX < canvasWidth - 100)
+        if(mainPlayer.posX < canvasWidth - mainPlayer.size)
         {
-            playerX = playerX + playerSpeed;
-            console.log(playerX)   
+            mainPlayer.posX = mainPlayer.posX + mainPlayer.speed;
         }
     }
 }
@@ -93,7 +82,7 @@ function update(){
 function render(){
     context.clearRect(0, 0, canvasWidth, canvasHeight);
     context.fillStyle = "#FF00C1";
-    context.fillRect(playerX, playerY, playerSize, playerSize);
+    context.fillRect(mainPlayer.posX, mainPlayer.posY, mainPlayer.size, mainPlayer.size);
 
 }
 
