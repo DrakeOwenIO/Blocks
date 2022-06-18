@@ -12,6 +12,12 @@ var keys = [];
 // Create player
 const mainPlayer = new Player(0, 0, 100, 5);
 
+// Temp Rectangle
+var rectX = 500
+var rectY = 200
+var rectLen = 200
+var rectWid = 100
+
 // Key pressed check
 window.addEventListener("keydown", function(e){
     keys[e.keyCode] = true;
@@ -30,8 +36,8 @@ function init(){
     canvas.setAttribute("width", canvasWidth)
     canvas.setAttribute("height", canvasHeight)
 
-    mainPlayer.posX = (canvasWidth / 2) - mainPlayer.size;
-    mainPlayer.posY = (canvasHeight / 2) - mainPlayer.size;
+    mainPlayer.posX = canvasWidth / 2 - (mainPlayer.size / 2);
+    mainPlayer.posY = canvasHeight / 2 - (mainPlayer.size / 2);
 }
 
 // Gameloop
@@ -77,7 +83,14 @@ function update(){
         }
     }
 
-    // console.log(mainPlayer.posX + ', ' + mainPlayer.posY)
+    // Collision Detection
+    if(mainPlayer.posX + mainPlayer.size >= rectX && 
+        mainPlayer.posX <= rectX + rectWid && 
+        mainPlayer.posY + mainPlayer.size >= rectY &&
+        mainPlayer.posY <= rectY + rectLen)
+    {
+        console.log('colliding');
+    }
 }
 
 // Render stuff on the screen
@@ -89,7 +102,7 @@ function render(){
 
     // Test Rectangle
     context.fillStyle = "#00B8FF";
-    context.fillRect(670, 15, 100, 200)
+    context.fillRect(rectX, rectY, rectWid, rectLen)
 
 }
 

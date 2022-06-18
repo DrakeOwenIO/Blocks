@@ -16,3 +16,10 @@
     Maybe add a bit of padding.
 
     Future Idea: Add physics, rag dolling, all of that.
+
+
+
+2. Moving maze. Generate a maze of a certain height and width. 
+        it moves and you'r time survived is the score. 
+
+        It will be level based so that I dont have to do procedural generation.
