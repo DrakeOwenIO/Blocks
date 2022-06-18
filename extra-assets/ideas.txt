@@ -11,3 +11,8 @@
             the higher your score will be. Inspiration was "block party" from fall guys.
 
     Styling: Neons shapes with black background. 
+
+    Find screen width, then set main container to that size dynimcailly so the game with be contained with the screen
+    Maybe add a bit of padding.
+
+    Future Idea: Add physics, rag dolling, all of that.
