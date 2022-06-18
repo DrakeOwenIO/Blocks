@@ -1,0 +1,13 @@
+1. Game where you have a bunch of shapes on the screen, like 5 to start.
+    Maybe you have 2 circle, 1 triangle, and  2 squares. 
+    Stuff like that. You have control of all of these shapes. 
+    You can move them up down and around the screen. 
+    Different shapes will move at different speeds.
+    There's no physics so they just slide around the screen.  
+    Then, obstacles start coming at you from the right.
+
+    Objective: Fit through these walls and obstacles and stay on the screen
+            as long as possible. The more shapes you have at the end of the round,
+            the higher your score will be. Inspiration was "block party" from fall guys.
+
+    Styling: Neons shapes with black background. 
