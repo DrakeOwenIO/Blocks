@@ -1,12 +1,17 @@
-console.log('linked');
-
 var canvas = document.getElementById("game");
 var context = canvas.getContext("2d");
+
 var playerX = 0;
 var playerY = 0;
 var playerSize = 100;
 var playerSpeed = 5;
+
+var canvasWidth = 0;
+var canvasHeight = 0;
+
 var keys = [];
+
+var collision = false;
 
 // Key pressed check
 window.addEventListener("keydown", function(e){
@@ -19,8 +24,14 @@ window.addEventListener("keyup", function(e){
 
 // initialization
 function init(){
-    playerX = 800/2;
-    playerY = 600/2;
+    canvasWidth = 800;
+    canvasHeight = 600;
+
+    canvas.setAttribute("width", 800)
+    canvas.setAttribute("height", 600)
+
+    playerX = canvasWidth/2;
+    playerY = canvasHeight/2;
 }
 
 // gameloop
@@ -36,11 +47,17 @@ function update(){
     // Move Left
     if(keys[65] == true) {
         playerX = playerX - playerSpeed;
+
+        console.log('PlayerX: ' + playerX);
+        console.log('PlayerY: ' + playerY);
     }
 
     // Move Up
     if(keys[87] == true) {
         playerY = playerY - playerSpeed;
+
+        console.log('PlayerX: ' + playerX);
+        console.log('PlayerY: ' + playerY);
     }
 
     // Move Down
@@ -53,13 +70,18 @@ function update(){
         playerX = playerX + playerSpeed;
     }
 
-// Collision
+
+//Game Boundary Collision
+    // Left Wall
+    if(playerX == canvasWidth - canvasWidth) {
+        
+    }
 
 }
 
 // render drawings
 function render(){
-    context.clearRect(0, 0, 800, 600);
+    context.clearRect(0, 0, canvasWidth, canvasHeight);
     context.fillStyle = "#FF00C1";
     context.fillRect(playerX, playerY, playerSize, playerSize);
 
@@ -67,4 +89,4 @@ function render(){
 
 window.setInterval(loop, 1000/60);
 
-init()
+init();
