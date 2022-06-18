@@ -76,13 +76,20 @@ function update(){
             mainPlayer.posX = mainPlayer.posX + mainPlayer.speed;
         }
     }
+
+    // console.log(mainPlayer.posX + ', ' + mainPlayer.posY)
 }
 
 // Render stuff on the screen
 function render(){
+    // Render Player
     context.clearRect(0, 0, canvasWidth, canvasHeight);
     context.fillStyle = "#FF00C1";
     context.fillRect(mainPlayer.posX, mainPlayer.posY, mainPlayer.size, mainPlayer.size);
+
+    // Test Rectangle
+    context.fillStyle = "#00B8FF";
+    context.fillRect(670, 15, 100, 200)
 
 }
 
