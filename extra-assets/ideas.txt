@@ -23,3 +23,14 @@
         it moves and you'r time survived is the score. 
 
         It will be level based so that I dont have to do procedural generation.
+
+
+
+3. Obstacles flying at the player
+        Every second generate a new blue retangle to slide across the screen. 
+        Choose a random y value to spawn at, random width, and speed
+        Create an enemy spawn timer to time that
+        Create another timer to increase difficulty every 30 seconds or so
+        Create a score timer to record how long the game lasts
+
+        Deconstruct the object after its off the screen (have to create a Deconstructor for our obstacle class)  

@@ -1,5 +1,5 @@
+import Obstacle from "./obstacleClass.js";
 import Player from "./playerClass.js"
-
 
 // Defining the play area
 var canvas = document.getElementById("game");
@@ -14,10 +14,7 @@ var keys = [];
 const mainPlayer = new Player(0, 0, 100, 5);
 
 // Temp Rectangle
-var rectX = 500
-var rectY = 200
-var rectLen = 200
-var rectWid = 100
+var rect = new Obstacle(670, 15, 200, 100, 5)
 
 // Key pressed check
 window.addEventListener("keydown", function(e){
@@ -32,7 +29,7 @@ window.addEventListener("keyup", function(e){
 // Initialization
 function init(){
 
-    // Running the game at 60fps
+    // Run the game at 60fps
     window.setInterval(loop, 1000/60);
 
     // Set canvas size
@@ -57,65 +54,32 @@ function loop(){
 // Where all the changes to the screen happens
 function update(){
 
-// MOVEMENT KEYS
-    // Move Left | A
-    if(keys[65] == true) {
-        if(mainPlayer.posX > canvasWidth - canvasWidth)
-        {
-            mainPlayer.posX = mainPlayer.posX - mainPlayer.speed;
-        }
-    }
-
-    // Move Up | W
-    if(keys[87] == true) {
-        if(mainPlayer.posY > canvasHeight - canvasHeight)
-        {
-            mainPlayer.posY = mainPlayer.posY - mainPlayer.speed;
-        }
-
-    }
-
-    // Move Down | S
-    if(keys[83] == true) {
-        if(mainPlayer.posY < canvasHeight - mainPlayer.size)
-        {
-            mainPlayer.posY = mainPlayer.posY + mainPlayer.speed;
-        }
-    }
-
-    //Move Right | D
-    if(keys[68] == true) {
-        if(mainPlayer.posX < canvasWidth - mainPlayer.size)
-        {
-            mainPlayer.posX = mainPlayer.posX + mainPlayer.speed;
-        }
-    }
+    // Let the player move
+    mainPlayer.movement(keys, mainPlayer, canvasWidth, canvasHeight)
 
     // Collision Detection
-    if(mainPlayer.posX + mainPlayer.size >= rectX && 
-        mainPlayer.posX <= rectX + rectWid && 
-        mainPlayer.posY + mainPlayer.size >= rectY &&
-        mainPlayer.posY <= rectY + rectLen)
+    // ADD COLLISION DETECTION TO PLAYER CLASS?
+    if(mainPlayer.posX + mainPlayer.size >= rect.posX && 
+        mainPlayer.posX <= rect.posX + rect.wid && 
+        mainPlayer.posY + mainPlayer.size >= rect.posY &&
+        mainPlayer.posY <= rect.posY + rect.len)
     {
         gameOver();
     }
 
-    rectX = rectX - 1
+    // rect.move(rect);
 }
 
-// Render stuff on the screen
+// Render stuff to screen
 function render(){
-    // Render Player
-    context.clearRect(0, 0, canvasWidth, canvasHeight);
-    context.fillStyle = "#FF00C1";
-    context.fillRect(mainPlayer.posX, mainPlayer.posY, mainPlayer.size, mainPlayer.size);
-
-    // Test Rectangle
-    context.fillStyle = "#00B8FF";
-    context.fillRect(rectX, rectY, rectWid, rectLen)
-
+    // Call Player Renderer
+    mainPlayer.render(context, mainPlayer, canvasWidth, canvasHeight);
+    
+    // Call Obstacle Renderer
+    rect.render(context, rect);
 }
 
+// Ends the game
 function gameOver() {
     canvas.style.display = "none";
     var tooltip = document.getElementById('tooltip');
