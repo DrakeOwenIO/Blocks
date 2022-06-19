@@ -1,5 +1,6 @@
 import Player from "./playerClass.js"
 
+
 // Defining the play area
 var canvas = document.getElementById("game");
 var context = canvas.getContext("2d");
@@ -17,9 +18,6 @@ var rectX = 500
 var rectY = 200
 var rectLen = 200
 var rectWid = 100
-
-// Game Over Div
-var gameOverDiv = document.getElementById("gameOverBox")
 
 // Key pressed check
 window.addEventListener("keydown", function(e){
@@ -101,6 +99,8 @@ function update(){
     {
         gameOver();
     }
+
+    rectX = rectX - 1
 }
 
 // Render stuff on the screen
