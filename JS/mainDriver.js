@@ -81,9 +81,8 @@ function render(){
 
 // Ends the game
 function gameOver() {
-    canvas.style.display = "none";
-    var tooltip = document.getElementById('tooltip');
-    tooltip.textContent = 'Game Over';
+    window.open('./gameOver.html')
+    window.close();
 }
 
 // Calling the initialization
