@@ -31,6 +31,17 @@ window.addEventListener("keyup", function(e){
     keys[e.keyCode] = false;
 })
 
+// Detects if player has hit an enemy
+function hitDetection(player, enemy) {
+    if(player.posX + player.size >= enemy.posX && 
+        player.posX <= enemy.posX + enemy.wid && 
+        player.posY + player.size >= enemy.posY &&
+        player.posY <= enemy.posY + enemy.len)
+    {
+        gameOver();
+    }   
+}
+
 // Initialization
 function init(){
 
@@ -101,6 +112,7 @@ function render(){
     {
         enemyArray[i].render(context, enemyArray[i]);
         enemyArray[i].move(enemyArray[i]);
+        hitDetection(mainPlayer, enemyArray[i]);
     }
    
 }
