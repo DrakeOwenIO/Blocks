@@ -1,5 +1,6 @@
 import Obstacle from "./obstacleClass.js";
 import Player from "./playerClass.js"
+import {spawn} from "./enemySpawn.js";
 
 // Defining the play area
 var canvas = document.getElementById("game");
@@ -15,6 +16,10 @@ const mainPlayer = new Player(0, 0, 100, 5);
 
 // Temp Rectangle
 var rect = new Obstacle(670, 15, 200, 100, 5)
+var spawnTimer = 0;
+var newEnemy = null;
+var enemyArray = {};
+var enemyCount = 4;
 
 // Key pressed check
 window.addEventListener("keydown", function(e){
@@ -67,7 +72,18 @@ function update(){
         gameOver();
     }
 
+    if(spawnTimer === 100){
+        console.log('calling spawn');
+        for (let i = 0; i < enemyCount; i++)
+        {
+            enemyArray[i] = spawn(canvasWidth, canvasHeight, context);
+        }
+        
+        spawnTimer = 0;
+    }
+
     // rect.move(rect);
+    spawnTimer += 1;
 }
 
 // Render stuff to screen
@@ -77,6 +93,16 @@ function render(){
     
     // Call Obstacle Renderer
     rect.render(context, rect);
+
+    // newEnemy.render(context, newEnemy);
+    // newEnemy.move(newEnemy);
+
+    for(let i = 0; i < enemyCount; i++)
+    {
+        enemyArray[i].render(context, enemyArray[i]);
+        enemyArray[i].move(enemyArray[i]);
+    }
+   
 }
 
 // Ends the game
