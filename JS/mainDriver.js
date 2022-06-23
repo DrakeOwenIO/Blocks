@@ -22,7 +22,7 @@ const mainPlayer = new Player(0, 0, 90, 5);
 // Enemy Spawning Variables
 var spawnTimer = 0;
 var enemyArray = {};
-var enemyCount = 4;
+var enemyCount = 6;
 
 // Key pressed check
 window.addEventListener("keydown", function(e){
@@ -90,7 +90,7 @@ function update(){
     mainPlayer.movement(keys, mainPlayer, canvasWidth, canvasHeight)
 
     // Spawn new enemies
-    if(spawnTimer === 100){
+    if(spawnTimer === 200){
         console.log('calling spawn');
         for (let i = 0; i < enemyCount; i++)
         {
