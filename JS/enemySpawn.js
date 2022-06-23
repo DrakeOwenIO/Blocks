@@ -1,8 +1,8 @@
 import Obstacle from "./obstacleClass.js";
 
 // Make a random number
-function generateNumber(numberRange){
-   var randomNumber = Math.floor(Math.random() * (numberRange - 50) + 50);
+function generateNumber(canvasHeight){
+   var randomNumber = Math.floor(Math.random() * (canvasHeight - 100) + 50);
 
    console.log(randomNumber);
 
@@ -10,10 +10,8 @@ function generateNumber(numberRange){
 }
 
 export function spawn(canvasWidth, canvasHeight, context) {
-    var enemyCount = 10;
-
     
-    var objectArray = new Obstacle(canvasWidth, generateNumber(canvasHeight - 2), 50, 100, 10);
+    var objectArray = new Obstacle(canvasWidth, generateNumber(canvasHeight), 50, 100, 10);
     
 
     return objectArray;    

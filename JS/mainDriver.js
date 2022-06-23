@@ -9,6 +9,9 @@ var canvasHeight = 0;
 var score = 0;
 var scoreTimer = 0;
 var scoreCounter = document.getElementById('score');
+var sessionScore = score;
+var highScore = 0;
+var highScoreCounter = document.getElementById('highScore');
 
 // Recording keypresses
 var keys = [];
@@ -53,8 +56,18 @@ function init(){
     canvasHeight = 600;
 
     // Display canvas size
-    canvas.setAttribute("width", canvasWidth)
-    canvas.setAttribute("height", canvasHeight)
+    canvas.setAttribute("width", canvasWidth);
+    canvas.setAttribute("height", canvasHeight);
+
+    // Check if theres a highscore
+    if(localStorage.getItem('highScore') != null)
+    {
+        highScore = localStorage.getItem('highScore');
+        highScoreCounter.innerText = 'Highscore: ' + highScore;
+    }
+    else{
+        highScoreCounter.innerText = 'Highscore: No highscore recorded yet!';
+    }
 
     // Start score counter
     scoreCounter.innerText = 'Score: ' + score;
@@ -93,6 +106,7 @@ function update(){
         score += 1;
         scoreCounter = document.getElementById('score');
         scoreCounter.innerHTML = 'Score: ' + score;
+        localStorage.setItem('score', score);
 
         scoreTimer = 0;
     }
@@ -100,6 +114,13 @@ function update(){
     // Increment Timers
     spawnTimer += 1;
     scoreTimer += 1;
+
+    //Set highscore
+    if(score > highScore || highScore === null)
+    {
+        highScore = score;
+        localStorage.setItem('highScore', highScore);
+    }
 }
 
 // Render stuff to screen
