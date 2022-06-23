@@ -17,11 +17,12 @@ var highScoreCounter = document.getElementById('highScore');
 var keys = [];
 
 // Create player
-const mainPlayer = new Player(0, 0, 90, 5);
+const mainPlayer = new Player(0, 0, 70, 6);
 
 // Enemy Spawning Variables
 var spawnTimer = 0;
 var enemyArray = {};
+var enemyArray2 = {};
 var enemyCount = 6;
 
 // Key pressed check
@@ -89,12 +90,21 @@ function update(){
     // Let the player move
     mainPlayer.movement(keys, mainPlayer, canvasWidth, canvasHeight)
 
-    // Spawn new enemies
-    if(spawnTimer === 200){
+    // First Wave of Enemies
+    if(spawnTimer === 100){
         console.log('calling spawn');
         for (let i = 0; i < enemyCount; i++)
         {
             enemyArray[i] = spawn(canvasWidth, canvasHeight, context);
+        }
+    }
+
+    // Second Wave of Enemies
+    if(spawnTimer === 200){
+        console.log('calling spawn');
+        for (let i = 0; i < enemyCount; i++)
+        {
+            enemyArray2[i] = spawn(canvasWidth, canvasHeight, context);
         }
         
         spawnTimer = 0;
@@ -128,12 +138,20 @@ function render(){
     // Call Player Renderer
     mainPlayer.render(context, mainPlayer, canvasWidth, canvasHeight);
 
-    // Render Enemies
+    // Render Wave 1
     for(let i = 0; i < enemyCount; i++)
     {
         enemyArray[i].render(context, enemyArray[i]);
         enemyArray[i].move(enemyArray[i]);
         hitDetection(mainPlayer, enemyArray[i]);
+    }
+
+    // Render Wave 2
+    for(let i = 0; i < enemyCount; i++)
+    {
+        enemyArray2[i].render(context, enemyArray2[i]);
+        enemyArray2[i].move(enemyArray2[i]);
+        hitDetection(mainPlayer, enemyArray2[i]);
     }
    
 }
