@@ -2,6 +2,7 @@
 Milestone browser game project for my NCSU Software Dev Program called 'Blocks'
 
 Note: Must run in live server to allow imports to work properly
+
 You can play the finished game at: http://drakeowen.io/projectGame/mainMenu.html
 
 This is a simple game where you control a player using the WASD keys and have to dodge randomly generated blocks that move horizontally across the screen.
@@ -27,5 +28,5 @@ Invincibility Glitch on Microsoft Edge
     - I can't reproduce this issue on Chrome.
 
     - Doesn't seem to happen in every game.
-    
+
     - Happens more often in windowed mode. 
