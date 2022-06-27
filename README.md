@@ -1,13 +1,15 @@
 # Blocks
 'Blocks' is a milestone browser game project for my NCSU Software Dev Program. 
 
-Note: Must run in live server to allow imports to work properly
+Note: Must run in live server to allow imports to work properly. THIS WILL NOT RUN IN GITHUB PAGES!
 
 You can play the finished game at: http://drakeowen.io/projectGame/mainMenu.html
 
 This is a simple game where you control a player using the WASD keys and have to dodge randomly generated blocks that move horizontally across the screen.
 The score updates once per second and then game ends when the player is touched by a block. 
 It saves the highscore and will display it to the player across games using local storage.
+The inspiration for this game is some game devs that I follow on YouTube. They take part in game jams where you build a game in a short amount of time under
+certain restrictions. They normally start with a dead simple concept and add things from there. So I started by printing some squares to the screen and went from there.  
 
 Known Bugs
 -------------------
@@ -30,3 +32,11 @@ Invincibility Glitch on Microsoft Edge
     - Doesn't seem to happen in every game.
 
     - Happens more often in windowed mode. 
+
+Unfinished Features
+----------------------
+Have obstacles not overlap. It looks messy and, although rare, it can make the game impossible.
+
+Add a leveling system where the player gains XP based on score and can unlock different colors based on XP. Similar to a battlepass in AAA games. 
+
+Increasing difficulty. As the game progresses the obstacles will move faster.
