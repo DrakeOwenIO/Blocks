@@ -13,10 +13,3 @@ body{
 #game{
     border: 1px solid #00FFF9;
 }
-
-#gameOverBox{
-    display: none;
-    width: 0;
-    height: 0;
-    border: 1px solid #00FFF9;
-}

@@ -1,5 +1,3 @@
-console.log("I am linked!")
-
 // Declare our buttons
 const resetButton = document.getElementById('reset-score');
 const startGame = document.getElementById('start-game');

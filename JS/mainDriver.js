@@ -1,3 +1,6 @@
+// This file controls the main game loop
+
+// Imports
 import Player from "./playerClass.js"
 import {spawn} from "./enemySpawn.js";
 
@@ -9,7 +12,6 @@ var canvasHeight = 0;
 var score = 0;
 var scoreTimer = 0;
 var scoreCounter = document.getElementById('score');
-var sessionScore = score;
 var highScore = 0;
 var highScoreCounter = document.getElementById('highScore');
 

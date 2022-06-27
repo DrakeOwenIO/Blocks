@@ -1,11 +1,6 @@
 import Obstacle from "./obstacleClass.js";
 
-var lastX = 0;
-
-// Add collsion dectection here so that horizontal blocks don't overlap
-
-
-// Make a random number
+ // Generates random Y coord
 function generateY(maxHeight){
    var randomNumber = Math.floor(Math.random() * (maxHeight - 100) + 50);
 
@@ -14,6 +9,7 @@ function generateY(maxHeight){
    return randomNumber;
 }
 
+// Generates random X coord
 function generateX(maxRange, width){
 
     var randomNumber = Math.floor(Math.random() * (maxRange) + maxRange);
@@ -23,12 +19,12 @@ function generateX(maxRange, width){
     return randomNumber;
  }
 
+ // Spawns eveything
 export function spawn(canvasWidth, canvasHeight, context) {
     
     var objWid = 100; 
 
-    var objectArray = new Obstacle(generateX(canvasWidth, objWid), generateY(canvasHeight), 50, objWid, 10);
+    var object = new Obstacle(generateX(canvasWidth, objWid), generateY(canvasHeight), 50, objWid, 10);
     
-
-    return objectArray;    
+    return object;    
 }
