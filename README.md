@@ -11,13 +11,21 @@ It saves the highscore and will display it to the player across games using loca
 Known Bugs
 -------------------
 Random crash issue that isn't consistently reproducible.
-    - The tab randomly closes. Sometimes on game load, sometimes on game over or just randomly. 
+
+    - The tab randomly closes. Sometimes on game load, sometimes on game over or just randomly.
+
     - It seems to be some type of memory issue with the browser but I'm not 100% sure.
+
     - It could also be an issue with how the pages are loaded. A simliar issue could occur if pages are loaded out of order, but I haven't tested this.
+
     - Chrome doesn't generate a crash report when it happens.
 
 Invincibility Glitch on Microsoft Edge
+
     - When placing your player in a certain spot when using Microsoft Edge, all obstacles will miss the player.
+
     - I can't reproduce this issue on Chrome.
+
     - Doesn't seem to happen in every game.
+    
     - Happens more often in windowed mode. 
