@@ -9,12 +9,8 @@ body{
     font-family: 'Open Sans', sans-serif;
 }
 
-h1{
+h1, h2, h3{
     color: #9600FF;
-}
-
-h2{
-  color: #9600FF;
 }
 
 #main-container{

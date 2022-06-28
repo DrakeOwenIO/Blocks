@@ -33,10 +33,7 @@ Invincibility Glitch on Microsoft Edge
 
     - Happens more often in windowed mode. 
 
-Unfinished Features
+Additional Features If Time Had Allowed
 ----------------------
-Have obstacles not overlap. It looks messy and, although rare, it can make the game impossible.
-
-Add a leveling system where the player gains XP based on score and can unlock different colors based on XP. Similar to a battlepass in AAA games. 
 
 Increasing difficulty. As the game progresses the obstacles will move faster.

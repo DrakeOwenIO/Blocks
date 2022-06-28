@@ -3,8 +3,10 @@
 // Imports
 import Player from "./playerClass.js"
 import {spawn} from "./enemySpawn.js";
+import {getBattlePassColor} from "./battlepassHandler.js";
 
 // Defining the play area and score
+// Benefit of using a canvas is that you have exact locations reguardless of screensize
 var canvas = document.getElementById("game");
 var context = canvas.getContext("2d");
 var canvasWidth = 0;
@@ -19,7 +21,9 @@ var highScoreCounter = document.getElementById('highScore');
 var keys = [];
 
 // Create player
-const mainPlayer = new Player(0, 0, 70, 6);
+var playerColor = getBattlePassColor();
+
+const mainPlayer = new Player(0, 0, 70, 6, playerColor);
 
 // Enemy Spawning Variables
 var spawnTimer = 0;
@@ -160,6 +164,21 @@ function render(){
 
 // Ends the game
 function gameOver() {
+
+    // Calculates total score
+    if(localStorage.getItem('totalScore') != null)
+    {
+        let totalScore = localStorage.getItem('totalScore');
+
+        totalScore = Number(totalScore);
+
+        totalScore += score;
+        localStorage.setItem('totalScore', totalScore);
+    }
+    else{
+        localStorage.setItem('totalScore', score);
+    }
+
     window.open('./gameOver.html')
     window.close();
 }

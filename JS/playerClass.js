@@ -1,15 +1,16 @@
 export default class Player {
-    constructor(posX, posY, size, speed) {
+    constructor(posX, posY, size, speed, color) {
         this.posX = posX;
         this.posY = posY;
         this.size = size;
         this.speed = speed;
+        this.color = color;
     }
 
     render(context, object, canvasWidth, canvasHeight) {
         // Render Player
         context.clearRect(0, 0, canvasWidth, canvasHeight);
-        context.fillStyle = "#FF00C1";
+        context.fillStyle = object.color;
         context.fillRect(object.posX, object.posY, object.size, object.size);
     }
 
