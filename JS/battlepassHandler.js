@@ -21,12 +21,12 @@ export function getBattlePassColor() {
         }
 
         if(totalScore >= 300 && totalScore < 400){
-            playerColor = '#4900FF';
+            playerColor = '#00B8FF';
             localStorage.setItem('battlepassTier', 4);
         }
 
         if(totalScore >= 400 && totalScore < 500){
-            playerColor = '#4900FF';
+            playerColor = '#0FFF9';
             localStorage.setItem('battlepassTier', 5);
         }
     }
